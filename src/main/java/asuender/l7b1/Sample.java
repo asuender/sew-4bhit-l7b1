@@ -1,3 +1,5 @@
+package asuender.l7b1;
+
 /**
  * @author Andreas Suender
  * @version 11-29-2022
