@@ -1,16 +1,18 @@
 package asuender.l7b1.decorator.extended;
 
 import asuender.l7b1.ausdruck.Ausdruck;
-import asuender.l7b1.decorator.EinfacheBerechnung;
+import asuender.l7b1.decorator.FunktionInterface;
 
-public class Sinus extends EinfacheBerechnung {
+public class Sinus implements FunktionInterface {
+    private Ausdruck a;
+
     public Sinus(Ausdruck a) {
-        super(a);
+        this.a = a;
     }
 
     @Override
     public double berechne() {
-        return Math.sin(super.berechne());
+        return Math.sin(a.berechne());
     }
 
     @Override

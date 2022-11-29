@@ -2,6 +2,7 @@ package asuender.l7b1;
 
 import asuender.l7b1.ausdruck.Ausdruck;
 import asuender.l7b1.ausdruck.Zahl;
+import asuender.l7b1.decorator.Funktion;
 import asuender.l7b1.decorator.basic.*;
 import asuender.l7b1.decorator.extended.*;
 
@@ -13,7 +14,7 @@ public class MethodenTest {
                         new Zahl(12),
                         new Multiplikation(
                                 new Zahl(2.5),
-                                new Cosinus(new Zahl(34.7))
+                                new Funktion(new Cosinus(new Zahl(34.7)))
                         )
                 )
         );
