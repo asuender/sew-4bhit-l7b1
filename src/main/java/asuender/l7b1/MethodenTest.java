@@ -1,6 +1,9 @@
 package asuender.l7b1;
 
 import asuender.l7b1.ausdruck.Ausdruck;
+import asuender.l7b1.ausdruck.Zahl;
+import asuender.l7b1.decorator.basic.*;
+import asuender.l7b1.decorator.extended.*;
 
 public class MethodenTest {
     public static void main(String[] args) {
