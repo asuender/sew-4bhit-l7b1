@@ -1,4 +1,4 @@
-package asuender.l7b1;
+package asuender.l7b1.ausdruck;
 
 import asuender.l7b1.ausdruck.Ausdruck;
 
