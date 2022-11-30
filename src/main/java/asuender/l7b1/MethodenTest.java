@@ -6,18 +6,45 @@ import asuender.l7b1.decorator.basic.*;
 import asuender.l7b1.decorator.extended.*;
 
 public class MethodenTest {
+    public static void testMethod(Ausdruck ausdruck) {
+        double actual = ausdruck.berechne();
+
+        System.out.printf("%s = %f%n", ausdruck.textDarstellung(), actual);
+    }
+
     public static void main(String[] args) {
-        Ausdruck a = new Addition(
+        Ausdruck a1 = new Addition(
                 new Sinus(new Zahl(3)),
-                new Potenz(
-                        new Zahl(12),
-                        new Multiplikation(
-                                new Zahl(2.5),
-                                new Cosinus(new Zahl(34.7))
-                        )
-                )
+                new Potenz(new Zahl(12),
+                        new Multiplikation(new Zahl(2.5), new Cosinus(new Zahl(34.7))))
         );
 
-        System.out.println(a.textDarstellung() + " = " + a.berechne());
+        Ausdruck a2 = new Addition(
+                new Logarithmus(new Zahl(3.567)),
+                new Multiplikation(new Zahl(78.9),
+                        new Division(new Zahl(2.5), new Cosinus(new Zahl(34.7))))
+        );
+
+        Ausdruck a3 = new Multiplikation(
+                new Vorzeichenwechsel(new Zahl(5)),
+                new Vorzeichenwechsel(new Zahl(-1))
+        );
+
+        Ausdruck a4 = new Addition(
+                new Potenz(new Sinus(new Zahl(3)), new Zahl(2)),
+                new Potenz(new Cosinus(new Zahl(3)), new Zahl(2))
+        );
+
+
+        Ausdruck a5 = new Division(
+                new Zahl(1),
+                new Division(new Logarithmus(new Zahl(5)), new Zahl(30))
+        );
+
+        testMethod(a1);
+        testMethod(a2);
+        testMethod(a3);
+        testMethod(a4);
+        testMethod(a5);
     }
 }
