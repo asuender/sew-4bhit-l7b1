@@ -3,6 +3,9 @@ package asuender.l7b1;
 import asuender.l7b1.ausdruck.Ausdruck;
 import asuender.l7b1.ausdruck.Zahl;
 import asuender.l7b1.decorator.basic.*;
+import asuender.l7b1.decorator.converter.AusdruckConverter;
+import asuender.l7b1.decorator.converter.InfixConverter;
+import asuender.l7b1.decorator.converter.PostfixConverter;
 import asuender.l7b1.decorator.extended.*;
 
 public class MethodenTest {
@@ -13,6 +16,8 @@ public class MethodenTest {
     }
 
     public static void main(String[] args) {
+        System.out.println("\n==== Grundlegend ====\n");
+
         Ausdruck a1 = new Addition(
                 new Sinus(new Zahl(3)),
                 new Potenz(new Zahl(12),
@@ -46,5 +51,19 @@ public class MethodenTest {
         testMethod(a3);
         testMethod(a4);
         testMethod(a5);
+
+        System.out.println("\n==== Postfix ====\n");
+
+        Ausdruck pfa1 = AusdruckConverter.convertToAusdruck(new PostfixConverter(), "2 3 4 * +");
+        Ausdruck pfa2 = AusdruckConverter.convertToAusdruck(new PostfixConverter(), "2 3 + 4 *");
+        // Ausdruck pfa3 = AusdruckConverter.convertToAusdruck(new PostfixConverter(), "2 3 4 * + 5 -");
+
+        testMethod(pfa1);
+        testMethod(pfa2);
+
+        /*System.out.println("\n==== Infix ====\n");
+        Ausdruck ifa1 = AusdruckConverter.convertToAusdruck(new InfixConverter(), "2 + 3 * 4");
+
+        testMethod(ifa1);*/
     }
 }
