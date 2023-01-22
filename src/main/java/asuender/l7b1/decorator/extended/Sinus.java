@@ -1,9 +1,9 @@
 package asuender.l7b1.decorator.extended;
 
 import asuender.l7b1.ausdruck.Ausdruck;
-import asuender.l7b1.decorator.EinfacheBerechnung;
+import asuender.l7b1.decorator.AusdruckDecorator;
 
-public class Sinus extends EinfacheBerechnung {
+public class Sinus extends AusdruckDecorator {
     public Sinus(Ausdruck a) {
         super(a);
     }

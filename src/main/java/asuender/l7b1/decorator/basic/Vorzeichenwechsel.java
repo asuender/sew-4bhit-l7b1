@@ -1,9 +1,9 @@
 package asuender.l7b1.decorator.basic;
 
 import asuender.l7b1.ausdruck.Ausdruck;
-import asuender.l7b1.decorator.EinfacheBerechnung;
+import asuender.l7b1.decorator.AusdruckDecorator;
 
-public class Vorzeichenwechsel extends EinfacheBerechnung {
+public class Vorzeichenwechsel extends AusdruckDecorator {
     public Vorzeichenwechsel(Ausdruck a) {
         super(a);
     }
