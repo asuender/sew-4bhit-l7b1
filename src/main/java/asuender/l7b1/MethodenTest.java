@@ -52,14 +52,15 @@ public class MethodenTest {
         testMethod(a4);
         testMethod(a5);
 
-        System.out.println("\n==== Postfix ====\n");
+        System.out.println("\n==== Postfix & Variablen ====\n");
 
         Ausdruck pfa1 = AusdruckConverter.convertToAusdruck(new PostfixConverter(), "2 3 4 * +");
         Ausdruck pfa2 = AusdruckConverter.convertToAusdruck(new PostfixConverter(), "2 3 + 4 *");
-        // Ausdruck pfa3 = AusdruckConverter.convertToAusdruck(new PostfixConverter(), "2 3 4 * + 5 -");
+        Ausdruck pfa3 = AusdruckConverter.convertToAusdruck(new PostfixConverter(), "x sin");
 
         testMethod(pfa1);
         testMethod(pfa2);
+        testMethod(pfa3);
 
         /*System.out.println("\n==== Infix ====\n");
         Ausdruck ifa1 = AusdruckConverter.convertToAusdruck(new InfixConverter(), "2 + 3 * 4");
