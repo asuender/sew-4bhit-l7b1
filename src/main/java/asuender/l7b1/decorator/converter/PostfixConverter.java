@@ -3,6 +3,8 @@ package asuender.l7b1.decorator.converter;
 import asuender.l7b1.ausdruck.*;
 import asuender.l7b1.decorator.basic.*;
 import asuender.l7b1.decorator.extended.*;
+import asuender.l7b1.decorator.variables.ScannerInserter;
+import asuender.l7b1.decorator.variables.Variable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +26,16 @@ public class PostfixConverter extends AbstractConverter {
         String[] parts = text.split("\\s+");
 
         for (int i = 0; i < parts.length; i++) {
+
             if (isNumeric(parts[i])) {
                 list.add(new Zahl(Double.parseDouble(parts[i])));
-            } else {
+            }
+
+            else if (parts[i].matches("[a-z]")) {
+                list.add(new Variable(parts[i], new ScannerInserter()));
+            }
+
+            else if (parts[i].matches("[+\\-*/]")) {
                 Ausdruck a = list.remove(list.size() - 1);
                 Ausdruck b = list.remove(list.size() - 1);
 
@@ -43,6 +52,19 @@ public class PostfixConverter extends AbstractConverter {
                     case "/":
                         list.add(new Division(b, a));
                         break;
+                }
+            }
+
+            else if (parts[i].matches("pow")) {
+                Ausdruck a = list.remove(list.size() - 1);
+                Ausdruck b = list.remove(list.size() - 1);
+                list.add(new Potenz(a, b));
+            }
+
+            else {
+                Ausdruck a = list.remove(list.size() - 1);
+
+                switch (parts[i]) {
                     case "sin":
                         list.add(new Sinus(a));
                         break;
@@ -58,9 +80,6 @@ public class PostfixConverter extends AbstractConverter {
                         break;
                     case "sqrt":
                         list.add(new Sqrt(a));
-                        break;
-                    case "pow":
-                        list.add(new Potenz(b, a));
                         break;
                     case "abs":
                         list.add(new Betrag(a));
